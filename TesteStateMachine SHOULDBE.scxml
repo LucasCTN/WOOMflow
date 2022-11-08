@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" initial="InitialPseudoState" name="State Machine State Machine diagram">
+    <state id="Estado_A">
+        <!-- <qt:editorinfo initialGeometry="161; 54; 240; 137"> -->
+        <internaltransition event="Do" guard="Reacao_A" />
+        <transition id="Acao_B" target="Estado_B" />
+    </state>
+    <state id="Estado_B">
+        <!-- <qt:editorinfo initialGeometry="161; 74; 540; 129"> -->
+        <internaltransition event="Entry" guard="Reacao1_B" />
+        <internaltransition event="Do" guard="Reacao2_B" />
+        <transition id="Acao_C" target="Estado_C" />
+    </state>
+    <state id="Initial State">
+        <!-- <qt:editorinfo initialGeometry="48; 48; 60; 140"> -->
+        <transition id="Acao_A" target="Estado_A" />
+    </state>
+    <state id="Estado_C">
+        <!-- <qt:editorinfo initialGeometry="161; 54; 540; 303"> -->
+        <internaltransition event="Do" guard="Reacao_C" />
+        <transition id="Acao_D" target="Estado_D" />
+    </state>
+    <state id="Estado_D">
+        <!-- <qt:editorinfo initialGeometry="161; 54; 240; 303"> -->
+        <internaltransition event="Do" guard="Reacao_D" />
+        <transition id="Fechar_Processo" target="Final State" />
+    </state>
+    <state id="Final State">
+        <!-- <qt:editorinfo initialGeometry="48; 48; 60; 306"> -->
+    </state>
+</scxml>
