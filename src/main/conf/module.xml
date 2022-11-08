@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Module id="${project.name}" class="org.modelio.warc.impl.WARCModule" binaryversion="4.0.00" version="${project.version}" schema-level="2" uid="f33d2343-4d05-43a6-98c3-3e6198903081">
+    <ClassPath>
+        <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
+        <PathEntry path="lib/commons-lang3-3.1.jar"/>
+        <PathEntry path="lib/gson-2.8.6.jar"/>
+    </ClassPath>
+    <Profiles>
+        <Profile uid="5384f747-936d-4ed7-ac1d-0d4755758719" id="TestArchetypeProfile">
+            <Stereotype name="stereotype1" metaclass="Class" is-hidden="false" label="Stereotype 1" uid="c429ef93-21de-476a-a9c2-818e90382a96">
+                <Icon path="res/icons/Stereotype1_16.png"/>
+                <Image path="res/icons/Stereotype1_48.png"/>
+            </Stereotype>
+            <Stereotype name="stereotype2" metaclass="ClassDiagram" is-hidden="false" label="Stereotype 2" uid="ff984659-ef3a-4f1c-8b43-4e48142631f4">
+                <Icon path="res/icons/Stereotype2_16.png"/>
+                <Image path="res/icons/Stereotype2_16.png"/>
+            </Stereotype>
+            <MetaclassReference uid="f702c6bf-faaf-4694-ab72-0886ea6848f8" metaclass="ModelElement">
+                <TagTypes>
+                    <TagType name="TagName" uid="bcf59e14-7b52-4a1d-a909-09910415c2d8" label="Name" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </MetaclassReference>
+        </Profile>
+    </Profiles>
+    <Gui>
+        <Commands>
+            <Command id="HelloWorldCommand" label="%HelloWorldCommandLabel" tooltip="%HelloWorldCommandTooltip" image="res/icons/HelloWorldCommand_16.png" group="" modify-model="false" group-image="">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="org.modelio.warc.command.HelloWorldCommand"/>
+            </Command>
+            <Command id="SCXMLExportCommand" label="%SCXMLExportCommandLabel" tooltip="%SCXMLExportCommandTooltip" image="res/icons/SCXMLExportCommand_16.png" group="" modify-model="false" group-image="">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="org.modelio.warc.command.SCXMLExportCommand"/>
+            </Command>
+            <Command id="CreateElementCommandExample" label="%CreateElementCommandExampleLabel" tooltip="%CreateElementCommandExampleTooltip" image="res/icons/Stereotype1_16.png" group="" modify-model="true" group-image="">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="ElementCreate">
+                    <HParameter name="name" value="%CreateElementCommandExampleName"/>
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="stereotype1"/>
+                </Handler>
+            </Command>
+            <Command id="CreateDiagramCommandExample" label="%CreateDiagramCommandExampleLabel" tooltip="%CreateDiagramCommandExampleTooltip" image="res/icons/Stereotype2_16.png" group="" modify-model="true" group-image="">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="DiagramCreate">
+                    <HParameter name="name" value="%CreateDiagramCommandExampleName"/>
+                    <HParameter name="metaclass" value="ClassDiagram"/>
+                    <HParameter name="stereotype" value="stereotype2"/>
+                </Handler>
+            </Command>
+        </Commands>
+        <Tools>
+            <Tool id="CreateElementDiagramCommandExample" label="%CreateElementDiagramCommandExampleLabel" tooltip="%CreateElementDiagramCommandExampleTooltip" image="res/icons/Stereotype1_16.png">
+                <Scope-source metaclass="ModelTree"/>
+                <Handler class="Box">
+                    <HParameter name="name" value="%CreateElementDiagramCommandExampleName"/>
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="stereotype1"/>
+                </Handler>
+            </Tool>
+        </Tools>
+        <ContextualMenu>
+            <CommandRef refid="HelloWorldCommand"/>
+            <CommandRef refid="SCXMLExportCommand"/>
+            <CommandRef refid="CreateElementCommandExample"/>
+            <CommandRef refid="CreateDiagramCommandExample"/>
+        </ContextualMenu>
+        <Diagrams>
+            <DiagramType base-diagram="ClassDiagram" stereotype="stereotype2">
+                <Palette keepBasePalette="false">
+                    <ToolRef refid="CreateElementDiagramCommandExample" group="Customization"/>
+                </Palette>
+                <Handler class="StandardCustomizer"/>
+            </DiagramType>
+        </Diagrams>
+        <Views/>
+    </Gui>
+    <Dependencies/>
+</Module>
